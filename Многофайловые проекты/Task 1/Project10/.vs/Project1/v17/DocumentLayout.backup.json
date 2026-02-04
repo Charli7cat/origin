@@ -1,12 +1,71 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\Project10\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|solutionrelative:Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|solutionrelative:MyMath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{88012A1D-D3A8-449D-BD8E-A99AC76EEBCA}|Project1.vcxproj|solutionrelative:MyMath.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MyMath.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.h",
+              "RelativeDocumentMoniker": "MyMath.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.h",
+              "RelativeToolTip": "MyMath.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:38:42.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MyMath.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.cpp",
+              "RelativeDocumentMoniker": "MyMath.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\MyMath.cpp",
+              "RelativeToolTip": "MyMath.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:38:36.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\Source.cpp",
+              "RelativeDocumentMoniker": "Source.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 1\\Project10\\Source.cpp",
+              "RelativeToolTip": "Source.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:38:06.328Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

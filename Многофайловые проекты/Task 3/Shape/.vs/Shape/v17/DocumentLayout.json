@@ -1,0 +1,377 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Score.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:Score.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:rhombus.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:rhombus.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:parallelogram.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:parallelogram.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:square.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:square.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:rectangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:rectangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:quadrilateral.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:Shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:Shape.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:right_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:right_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:isosceles_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:isosceles_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:equilateral_triangle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:equilateral_triangle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{463090F1-99DA-4733-9822-CE3BEB3581EE}|Shape.vcxproj|solutionrelative:quadrilateral.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 13,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "rhombus.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.cpp",
+              "RelativeDocumentMoniker": "rhombus.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.cpp",
+              "RelativeToolTip": "rhombus.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:56:36.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "rhombus.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.h",
+              "RelativeDocumentMoniker": "rhombus.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rhombus.h",
+              "RelativeToolTip": "rhombus.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:56:19.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "parallelogram.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.cpp",
+              "RelativeDocumentMoniker": "parallelogram.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.cpp",
+              "RelativeToolTip": "parallelogram.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:55:49.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "parallelogram.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.h",
+              "RelativeDocumentMoniker": "parallelogram.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\parallelogram.h",
+              "RelativeToolTip": "parallelogram.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:55:31.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "square.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.cpp",
+              "RelativeDocumentMoniker": "square.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.cpp",
+              "RelativeToolTip": "square.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:54:55.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "square.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.h",
+              "RelativeDocumentMoniker": "square.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\square.h",
+              "RelativeToolTip": "square.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:54:37.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "rectangle.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.cpp",
+              "RelativeDocumentMoniker": "rectangle.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.cpp",
+              "RelativeToolTip": "rectangle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:53:59.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "rectangle.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.h",
+              "RelativeDocumentMoniker": "rectangle.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\rectangle.h",
+              "RelativeToolTip": "rectangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:53:39.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "quadrilateral.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.cpp",
+              "RelativeDocumentMoniker": "quadrilateral.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.cpp",
+              "RelativeToolTip": "quadrilateral.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:52:21.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "quadrilateral.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.h",
+              "RelativeDocumentMoniker": "quadrilateral.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\quadrilateral.h",
+              "RelativeToolTip": "quadrilateral.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:51:44.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "equilateral_triangle.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.cpp",
+              "RelativeDocumentMoniker": "equilateral_triangle.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.cpp",
+              "RelativeToolTip": "equilateral_triangle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:51:15.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "equilateral_triangle.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.h",
+              "RelativeDocumentMoniker": "equilateral_triangle.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\equilateral_triangle.h",
+              "RelativeToolTip": "equilateral_triangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:50:54.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "isosceles_triangle.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.cpp",
+              "RelativeDocumentMoniker": "isosceles_triangle.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.cpp",
+              "RelativeToolTip": "isosceles_triangle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:49:59.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Score.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Score.cpp",
+              "RelativeDocumentMoniker": "Score.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Score.cpp",
+              "RelativeToolTip": "Score.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:44:50.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "isosceles_triangle.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.h",
+              "RelativeDocumentMoniker": "isosceles_triangle.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\isosceles_triangle.h",
+              "RelativeToolTip": "isosceles_triangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:49:34.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "right_triangle.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.cpp",
+              "RelativeDocumentMoniker": "right_triangle.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.cpp",
+              "RelativeToolTip": "right_triangle.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:48:59.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "right_triangle.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.h",
+              "RelativeDocumentMoniker": "right_triangle.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\right_triangle.h",
+              "RelativeToolTip": "right_triangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:48:39.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "triangle.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.cpp",
+              "RelativeDocumentMoniker": "triangle.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.cpp",
+              "RelativeToolTip": "triangle.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:47:31.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "triangle.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.h",
+              "RelativeDocumentMoniker": "triangle.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\triangle.h",
+              "RelativeToolTip": "triangle.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:46:53.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Shape.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.cpp",
+              "RelativeDocumentMoniker": "Shape.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.cpp",
+              "RelativeToolTip": "Shape.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:45:52.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Shape.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.h",
+              "RelativeDocumentMoniker": "Shape.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 3\\Shape\\Shape.h",
+              "RelativeToolTip": "Shape.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:45:08.778Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

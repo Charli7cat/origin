@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Sours.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|solutionrelative:Sours.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|solutionrelative:Counter.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F9295559-8444-4522-A181-25FAC2FA6704}|Counter.vcxproj|solutionrelative:Counter.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Counter.h",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.h",
+              "RelativeDocumentMoniker": "Counter.h",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.h",
+              "RelativeToolTip": "Counter.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-04T16:29:26.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Counter.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.cpp",
+              "RelativeDocumentMoniker": "Counter.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Counter.cpp",
+              "RelativeToolTip": "Counter.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:29:43.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sours.cpp",
+              "DocumentMoniker": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Sours.cpp",
+              "RelativeDocumentMoniker": "Sours.cpp",
+              "ToolTip": "C:\\Users\\Charli\\Desktop\\Origin \u0434\u0437\\\u041C\u043D\u043E\u0433\u043E\u0444\u0430\u0439\u043B\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0435\u043A\u0442\u044B\\Task 2\\Counter\\Sours.cpp",
+              "RelativeToolTip": "Sours.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-04T16:29:03.177Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -5,15 +5,12 @@ int main() {
     double num1, num2;
     int operation;
 
-    // Ввод первого числа
     std::cout << "Enter the first number: ";
     std::cin >> num1;
 
-    // Ввод второго числа
     std::cout << "Enter the second number: ";
     std::cin >> num2;
 
-    // Выбор операции
     std::cout << "Select an operation (1 - addition, 2 - subtraction, 3 - multiplication, 4 - division, 5 - exponentiation): ";
     std::cin >> operation;
 
@@ -56,5 +53,5 @@ int main() {
         std::cout << "Result: " << result << std::endl;
     }
 
-    return 0;
+    EXIT_SUCCESS;
 }
