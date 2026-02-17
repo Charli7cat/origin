@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "G:/Учеба нетология/my_first_cmake_project/out/build/x64-debug/CMakeFiles/my_first_cmake_project.dir/embed.manifest"

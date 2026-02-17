@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "my_first_cmake_project",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "my_first_cmake_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_first_cmake_project-Debug-4f2700b29a02275e7dd3.json",
+					"name" : "my_first_cmake_project",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "G:/\u0423\u0447\u0435\u0431\u0430 \u043d\u0435\u0442\u043e\u043b\u043e\u0433\u0438\u044f/my_first_cmake_project/out/build/x64-debug",
+		"source" : "G:/\u0423\u0447\u0435\u0431\u0430 \u043d\u0435\u0442\u043e\u043b\u043e\u0433\u0438\u044f/my_first_cmake_project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

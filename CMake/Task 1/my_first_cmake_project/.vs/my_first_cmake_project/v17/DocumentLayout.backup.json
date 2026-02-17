@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:my_first_cmake_project.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:my_first_cmake_project.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CMakeLists.txt",
+              "DocumentMoniker": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\CMakeLists.txt",
+              "RelativeDocumentMoniker": "CMakeLists.txt",
+              "ToolTip": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\CMakeLists.txt",
+              "RelativeToolTip": "CMakeLists.txt",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-02-17T10:17:36.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "my_first_cmake_project.h",
+              "DocumentMoniker": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.h",
+              "RelativeDocumentMoniker": "my_first_cmake_project.h",
+              "ToolTip": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.h",
+              "RelativeToolTip": "my_first_cmake_project.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-17T10:17:32.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "my_first_cmake_project.cpp",
+              "DocumentMoniker": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.cpp",
+              "RelativeDocumentMoniker": "my_first_cmake_project.cpp",
+              "ToolTip": "G:\\\u0423\u0447\u0435\u0431\u0430 \u043D\u0435\u0442\u043E\u043B\u043E\u0433\u0438\u044F\\my_first_cmake_project\\my_first_cmake_project.cpp",
+              "RelativeToolTip": "my_first_cmake_project.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-17T10:17:31.098Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
