@@ -6,10 +6,6 @@ private:
     int numerator_;
     int denominator_;
 
-    long long getCommonDenominatorValue() const {
-        return static_cast<long long>(numerator_) * denominator_;
-    }
-
 public:
     Fraction(int numerator, int denominator)
     {
