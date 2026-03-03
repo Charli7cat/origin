@@ -1,0 +1,7 @@
+# ninja log v6
+13	27	7942338996975703	clean	8c45b54705a541e8
+20	373	7942338997419545	LeaverLib/CMakeFiles/LeaverLib.dir/src/leaver.cpp.obj	4238ddda65ecf8c5
+27	544	7942338997475012	ConsoleApp/CMakeFiles/ConsoleApp.dir/src/main.cpp.obj	8f75e41cd5600086
+374	674	7942339003705766	LeaverLib/LeaverLib.dll	f7eeb9779c0edb20
+374	674	7942339003705766	LeaverLib/LeaverLib.lib	f7eeb9779c0edb20
+674	1032	7942339003942810	ConsoleApp/ConsoleApp.exe	fdd56f364cc7a01

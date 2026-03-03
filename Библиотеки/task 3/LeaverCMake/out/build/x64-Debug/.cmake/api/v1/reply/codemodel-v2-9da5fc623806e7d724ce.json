@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "LeaverLib",
+					"jsonFile" : "directory-LeaverLib-Debug-c4bda06288d432a34fb6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "LeaverLib",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "ConsoleApp",
+					"jsonFile" : "directory-ConsoleApp-Debug-a271567d42a40f104c0d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "ConsoleApp",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "LeaverCMake",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "ConsoleApp::@094f471c0171374cf8fe",
+					"jsonFile" : "target-ConsoleApp-Debug-cb6835567e1dd3dd6194.json",
+					"name" : "ConsoleApp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "LeaverLib::@1a32fecf9be8fb1a6e41",
+					"jsonFile" : "target-LeaverLib-Debug-7793f320b5f66db73f4f.json",
+					"name" : "LeaverLib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Charli/OneDrive/Desktop/Origin \u0434\u0437/\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0438/task 3/LeaverCMake/out/build/x64-Debug",
+		"source" : "C:/Users/Charli/OneDrive/Desktop/Origin \u0434\u0437/\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0438/task 3/LeaverCMake"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

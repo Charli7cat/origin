@@ -1,0 +1,8 @@
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/LeaverLib/CMakeFiles/LeaverLib.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/LeaverLib/CMakeFiles/edit_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/LeaverLib/CMakeFiles/rebuild_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/ConsoleApp/CMakeFiles/ConsoleApp.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/ConsoleApp/CMakeFiles/edit_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Библиотеки/task 3/LeaverCMake/out/build/x64-Debug/ConsoleApp/CMakeFiles/rebuild_cache.dir
