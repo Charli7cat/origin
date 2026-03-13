@@ -1,0 +1,3 @@
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/RaceSimulator/out/build/x64-Debug/CMakeFiles/RaceSimulator.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/RaceSimulator/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/RaceSimulator/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
