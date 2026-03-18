@@ -1,4 +1,5 @@
 build/
-/RaceSimulator/
-.vs/
-out/
+/.vs/
+/out/build
+.vs
+out
