@@ -13,18 +13,8 @@
 #include "Eagle.h"
 #include "Broom.h"
 
-void showRegisteredVehicles(const Race& race) {
-    std::cout << "\n--- REGISTERED VEHICLES ---\n";
-    if (race.getParticipantCount() == 0) {
-        std::cout << "No vehicles registered yet.\n";
-    } else {
-        std::cout << "Total: " << race.getParticipantCount() << " vehicle(s)\n";
-
-    }
-    std::cout << "--------------------------\n";
-}
-
 int main() {
+    // Set console encoding for Windows
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
@@ -72,9 +62,21 @@ int main() {
             std::cout << "\n=== PARTICIPANT REGISTRATION ===\n";
             
             while (true) {
-                std::cout << "\nRegistered vehicles: " << race.getParticipantCount() << "\n";
+                // Show current registered vehicles
+                std::cout << "\n----------------------------------------\n";
+                std::cout << "REGISTERED VEHICLES (" << race.getParticipantCount() << "):\n";
                 
-                std::cout << "\nAvailable vehicles:\n";
+                auto registeredNames = race.getParticipantNames();
+                if (registeredNames.empty()) {
+                    std::cout << "  No vehicles registered yet\n";
+                } else {
+                    for (size_t i = 0; i < registeredNames.size(); ++i) {
+                        std::cout << "  " << (i+1) << ". " << registeredNames[i] << "\n";
+                    }
+                }
+                std::cout << "----------------------------------------\n";
+                
+                std::cout << "\nAvailable vehicles to register:\n";
                 std::cout << "1. Camel (ground)\n";
                 std::cout << "2. Fast Camel (ground)\n";
                 std::cout << "3. Centaur (ground)\n";

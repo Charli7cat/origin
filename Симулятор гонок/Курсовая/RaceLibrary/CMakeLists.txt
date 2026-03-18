@@ -14,6 +14,7 @@ set(LIBRARY_SOURCES
     src/MagicCarpet.cpp
     src/Eagle.cpp
     src/Broom.cpp
+    src/Race.cpp
 )
 
 add_library(RaceLibrary SHARED ${LIBRARY_SOURCES})
@@ -25,4 +26,4 @@ set_target_properties(RaceLibrary PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
 )
 
-message(STATUS "RaceLibrary built as SHARED library")
+message(STATUS "RaceLibrary built as SHARED library with ${LIBRARY_SOURCES}")

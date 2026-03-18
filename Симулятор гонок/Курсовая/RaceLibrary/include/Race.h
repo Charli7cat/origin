@@ -6,8 +6,9 @@
 #include <string>
 #include "Vehicle.h"
 #include "RaceTypes.h"
+#include "Export.h"
 
-struct RaceResult {
+struct RACE_API RaceResult {
     std::string name;
     double time;
     
@@ -18,54 +19,29 @@ struct RaceResult {
     }
 };
 
-class Race {
+class RACE_API Race {
 private:
     double distance;
     RaceType type;
     std::vector<std::unique_ptr<Vehicle>> participants;
     std::set<std::string> registeredTypes;
     
-    bool isTypeAllowed(VehicleType vehicleType) const {
-        if (type == RaceType::ANY) return true;
-        if (type == RaceType::GROUND_ONLY && vehicleType == VehicleType::GROUND) return true;
-        if (type == RaceType::AIR_ONLY && vehicleType == VehicleType::AIR) return true;
-        return false;
-    }
+    bool isTypeAllowed(VehicleType vehicleType) const;
     
 public:
-    Race(double dist, RaceType t) : distance(dist), type(t) {}
+    Race(double dist, RaceType t);
+    ~Race();
     
-    bool registerVehicle(std::unique_ptr<Vehicle> vehicle) {
-        if (!isTypeAllowed(vehicle->getType())) {
-            return false;
-        }
-        
-        if (registeredTypes.find(vehicle->getName()) != registeredTypes.end()) {
-            return false;
-        }
-        
-        registeredTypes.insert(vehicle->getName());
-        participants.push_back(std::move(vehicle));
-        return true;
-    }
+    Race(const Race&) = delete;
+    Race& operator=(const Race&) = delete;
     
-    bool canStart() const {
-        return participants.size() >= 2;
-    }
+    Race(Race&&) = default;
+    Race& operator=(Race&&) = default;
     
-    std::vector<RaceResult> start() {
-        std::vector<RaceResult> results;
-        
-        for (const auto& v : participants) {
-            double time = v->calculateTime(distance);
-            results.emplace_back(v->getName(), time);
-        }
-        
-        std::sort(results.begin(), results.end());
-        return results;
-    }
+    bool registerVehicle(std::unique_ptr<Vehicle> vehicle);
+    bool canStart() const;
+    std::vector<RaceResult> start();
     
-    int getParticipantCount() const {
-        return static_cast<int>(participants.size());
-    }
+    int getParticipantCount() const;
+    std::vector<std::string> getParticipantNames() const;
 };
