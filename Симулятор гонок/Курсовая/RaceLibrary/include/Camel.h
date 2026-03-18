@@ -1,7 +1,8 @@
 #pragma once
 #include "GroundVehicle.h"
+#include "Export.h"
 
-class Camel : public GroundVehicle {
+class RACE_API Camel : public GroundVehicle {
 public:
     Camel();
 protected:

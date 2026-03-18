@@ -2,7 +2,7 @@
 #include "Vehicle.h"
 #include <cmath>
 
-class GroundVehicle : public Vehicle {
+class RACE_API GroundVehicle : public Vehicle {
 protected:
     double restInterval;
     virtual double calculateRestDuration(int restCount) const = 0;

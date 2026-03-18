@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
 #include "RaceTypes.h"
+#include "Export.h"
 
-class Vehicle {
+class RACE_API Vehicle {
 protected:
     std::string name;
     double speed;

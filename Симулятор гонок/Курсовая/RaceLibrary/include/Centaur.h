@@ -1,7 +1,7 @@
 #pragma once
 #include "GroundVehicle.h"
 
-class Centaur : public GroundVehicle {
+class RACE_API Centaur : public GroundVehicle {
 public:
     Centaur();
 protected:

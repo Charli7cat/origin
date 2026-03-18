@@ -1,7 +1,7 @@
 #pragma once
 #include "AirVehicle.h"
 
-class MagicCarpet : public AirVehicle {
+class RACE_API MagicCarpet : public AirVehicle {
 public:
     MagicCarpet();
 protected:

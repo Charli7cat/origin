@@ -1,7 +1,7 @@
 #pragma once
 #include "GroundVehicle.h"
 
-class FastCamel : public GroundVehicle {
+class RACE_API FastCamel : public GroundVehicle {
 public:
     FastCamel();
 protected:
