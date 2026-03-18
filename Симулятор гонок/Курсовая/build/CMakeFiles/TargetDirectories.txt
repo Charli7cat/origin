@@ -1,3 +1,0 @@
-C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/build/CMakeFiles/RaceSimulator.dir
-C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Charli/OneDrive/Desktop/Origin дз/Симулятор гонок/Курсовая/build/CMakeFiles/ZERO_CHECK.dir
