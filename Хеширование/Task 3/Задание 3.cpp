@@ -1,15 +1,12 @@
 #include <iostream>
 #include <string>
 #include <cstdint>
-#include <cmath>
 
 uint64_t hash_string(const std::string& str, uint64_t p, uint64_t n) {
     uint64_t hash = 0;
-    uint64_t power = 1;
 
     for (size_t i = 0; i < str.length(); ++i) {
-        hash = (hash + (static_cast<uint64_t>(str[i]) * power) % n) % n;
-        power = (power * p) % n;
+        hash = (hash * p + static_cast<uint64_t>(str[i])) % n;
     }
 
     return hash;
