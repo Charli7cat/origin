@@ -1,0 +1,14 @@
+# Target labels
+ catch2-populate
+# Source files and their labels
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/CMakeFiles/catch2-populate
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/CMakeFiles/catch2-populate.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/CMakeFiles/catch2-populate-complete.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-build.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-configure.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-download.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-install.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-mkdir.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-patch.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-test.rule
+D:/Origin DZ/Catch2/Task2/CMakeProject1/out/build/x64-debug/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-update.rule

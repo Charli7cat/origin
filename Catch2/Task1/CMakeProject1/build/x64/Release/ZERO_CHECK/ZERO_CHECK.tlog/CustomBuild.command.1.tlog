@@ -1,0 +1,10 @@
+^D:\ORIGIN DZ\CATCH2\TASK1\CMAKEPROJECT1\BUILD\CMAKEFILES\C20B4AD2210331EEE180F9ACA07E9B33\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Origin DZ/Catch2/Task1/CMakeProject1" "-BD:/Origin DZ/Catch2/Task1/CMakeProject1/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/LinkedListTests.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

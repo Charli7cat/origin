@@ -1,0 +1,3 @@
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/test_list.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/ALL_BUILD.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/ZERO_CHECK.dir

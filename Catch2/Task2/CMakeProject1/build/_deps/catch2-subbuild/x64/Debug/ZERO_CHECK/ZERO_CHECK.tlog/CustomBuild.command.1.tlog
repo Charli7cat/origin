@@ -1,0 +1,10 @@
+^D:\ORIGIN DZ\CATCH2\TASK2\CMAKEPROJECT1\BUILD\_DEPS\CATCH2-SUBBUILD\CMAKEFILES\5DDFEE17481FE384902C5B05679537F3\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Origin DZ/Catch2/Task2/CMakeProject1/build/_deps/catch2-subbuild" "-BD:/Origin DZ/Catch2/Task2/CMakeProject1/build/_deps/catch2-subbuild" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Origin DZ/Catch2/Task2/CMakeProject1/build/_deps/catch2-subbuild/catch2-populate.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
