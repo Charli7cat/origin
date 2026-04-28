@@ -1,3 +1,6 @@
-D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/test_list.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/list_tests.dir
 D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/ALL_BUILD.dir
 D:/Origin DZ/Catch2/Task1/CMakeProject1/build/CMakeFiles/ZERO_CHECK.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-build/CMakeFiles/ALL_BUILD.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-build/src/CMakeFiles/Catch2.dir
+D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir

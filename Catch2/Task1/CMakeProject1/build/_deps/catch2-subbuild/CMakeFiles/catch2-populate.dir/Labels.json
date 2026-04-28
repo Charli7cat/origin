@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/catch2-populate"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/77cdee384792e2a98c16f3ea739a2195/catch2-populate.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/30a28beeb194b700fdc052eacf55c118/catch2-populate-complete.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-build.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-configure.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-download.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-install.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-patch.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-test.rule"
+		},
+		{
+			"file" : "D:/Origin DZ/Catch2/Task1/CMakeProject1/build/_deps/catch2-subbuild/CMakeFiles/a24ed0f1159c1e85d7f2a6d74b1bbab9/catch2-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"catch2-populate"
+		],
+		"name" : "catch2-populate"
+	}
+}

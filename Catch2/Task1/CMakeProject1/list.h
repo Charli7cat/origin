@@ -1,7 +1,4 @@
-﻿#ifndef LIST_H
-#define LIST_H
-
-#include <iostream>
+﻿#include <iostream>
 #include <stdexcept>
 
 struct ListNode
@@ -20,14 +17,13 @@ public:
     ListNode* next;
 };
 
-
 class List
 {
 public:
     List()
         : m_head(new ListNode(static_cast<int>(0))), m_size(0),
         m_tail(new ListNode(0, m_head))
-    {
+    {       
     }
 
     virtual ~List()
@@ -76,10 +72,13 @@ public:
         auto current = m_head->next;
         while (current != m_tail)
         {
-            auto next = current->next;
-            delete extractPrev(current);
-            current = next;
+            auto next_node = current->next;
+            delete current;
+            current = next_node;
         }
+        m_head->next = m_tail;
+        m_tail->prev = m_head;
+        m_size = 0;
     }
 
 private:
@@ -97,5 +96,3 @@ private:
     ListNode* m_tail;
     unsigned long m_size;
 };
-
-#endif
