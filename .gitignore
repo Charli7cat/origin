@@ -1,3 +1,5 @@
 *.user
 *.filters
 .vs/
+out/
+build/
