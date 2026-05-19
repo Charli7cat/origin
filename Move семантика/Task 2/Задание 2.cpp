@@ -3,6 +3,8 @@
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
+#include <cmath>
+#include <cstdint>
 
 class big_integer {
 private:
@@ -18,6 +20,31 @@ private:
         }
     }
 
+    bool abs_greater_than(const big_integer& other) const {
+        if (digits.size() != other.digits.size()) {
+            return digits.size() > other.digits.size();
+        }
+
+        for (int i = digits.size() - 1; i >= 0; --i) {
+            if (digits[i] != other.digits[i]) {
+                return digits[i] > other.digits[i];
+            }
+        }
+        return false;
+    }
+
+    bool abs_equal(const big_integer& other) const {
+        if (digits.size() != other.digits.size()) {
+            return false;
+        }
+        for (size_t i = 0; i < digits.size(); ++i) {
+            if (digits[i] != other.digits[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 public:
     big_integer(const std::string& number) : is_negative(false) {
         if (number.empty()) {
@@ -31,8 +58,18 @@ public:
             start = 1;
         }
 
+        while (start < number.size() && number[start] == '0') {
+            ++start;
+        }
+
+        if (start == number.size()) {
+            digits.push_back(0);
+            is_negative = false;
+            return;
+        }
+
         for (int i = number.size() - 1; i >= (int)start; --i) {
-            if (!std::isdigit(number[i])) {
+            if (!std::isdigit(static_cast<unsigned char>(number[i]))) {
                 throw std::invalid_argument("Invalid character in number");
             }
             digits.push_back(number[i] - '0');
@@ -42,44 +79,26 @@ public:
     }
 
     big_integer(int number = 0) : is_negative(number < 0) {
-        number = std::abs(number);
         if (number == 0) {
             digits.push_back(0);
+            is_negative = false;
         }
         else {
-            while (number > 0) {
-                digits.push_back(number % 10);
-                number /= 10;
+            unsigned int abs_number = (number == INT_MIN) ?
+                static_cast<unsigned int>(INT_MAX) + 1 :
+                std::abs(number);
+
+            while (abs_number > 0) {
+                digits.push_back(abs_number % 10);
+                abs_number /= 10;
             }
         }
     }
 
-    big_integer(const big_integer& other)
-        : digits(other.digits), is_negative(other.is_negative) {
-    }
-
-    big_integer(big_integer&& other) noexcept
-        : digits(std::move(other.digits)), is_negative(other.is_negative) {
-        other.is_negative = false;
-    }
-
-    big_integer& operator=(const big_integer& other) {
-        if (this != &other) {
-            digits = other.digits;
-            is_negative = other.is_negative;
-        }
-        return *this;
-    }
-
-    big_integer& operator=(big_integer&& other) noexcept {
-        if (this != &other) {
-            digits = std::move(other.digits);
-            is_negative = other.is_negative;
-            other.is_negative = false;
-        }
-        return *this;
-    }
-
+    big_integer(const big_integer& other) = default;
+    big_integer(big_integer&& other) noexcept = default;
+    big_integer& operator=(const big_integer& other) = default;
+    big_integer& operator=(big_integer&& other) noexcept = default;
     ~big_integer() = default;
 
     big_integer operator+(const big_integer& other) const {
@@ -116,32 +135,6 @@ public:
         return result;
     }
 
-    big_integer operator*(int multiplier) const {
-        if (multiplier == 0) {
-            return big_integer(0);
-        }
-
-        big_integer result;
-        result.is_negative = is_negative != (multiplier < 0);
-        result.digits.clear();
-
-        int abs_multiplier = std::abs(multiplier);
-        int carry = 0;
-
-        for (size_t i = 0; i < digits.size() || carry; ++i) {
-            int product = carry;
-            if (i < digits.size()) {
-                product += digits[i] * abs_multiplier;
-            }
-
-            result.digits.push_back(product % 10);
-            carry = product / 10;
-        }
-
-        result.remove_leading_zeros();
-        return result;
-    }
-
     big_integer operator-(const big_integer& other) const {
         if (is_negative != other.is_negative) {
             big_integer abs_other = other;
@@ -151,11 +144,15 @@ public:
 
         bool this_greater = abs_greater_than(other);
 
+        if (abs_equal(other)) {
+            return big_integer(0);
+        }
+
         const big_integer* larger = this_greater ? this : &other;
         const big_integer* smaller = this_greater ? &other : this;
 
         big_integer result;
-        result.is_negative = (is_negative && this_greater) || (!is_negative && !this_greater);
+        result.is_negative = this_greater ? is_negative : !is_negative;
         result.digits.clear();
 
         int borrow = 0;
@@ -180,17 +177,99 @@ public:
         return result;
     }
 
-    bool abs_greater_than(const big_integer& other) const {
-        if (digits.size() != other.digits.size()) {
-            return digits.size() > other.digits.size();
+    big_integer operator*(const big_integer& other) const {
+        if ((digits.size() == 1 && digits[0] == 0) ||
+            (other.digits.size() == 1 && other.digits[0] == 0)) {
+            return big_integer(0);
         }
 
-        for (int i = digits.size() - 1; i >= 0; --i) {
-            if (digits[i] != other.digits[i]) {
-                return digits[i] > other.digits[i];
+        big_integer result;
+        result.digits.resize(digits.size() + other.digits.size(), 0);
+        result.is_negative = is_negative != other.is_negative;
+
+        for (size_t i = 0; i < digits.size(); ++i) {
+            int carry = 0;
+            for (size_t j = 0; j < other.digits.size(); ++j) {
+                int product = digits[i] * other.digits[j] + result.digits[i + j] + carry;
+                result.digits[i + j] = product % 10;
+                carry = product / 10;
+            }
+            if (carry) {
+                result.digits[i + other.digits.size()] += carry;
             }
         }
-        return false;
+
+        result.remove_leading_zeros();
+        return result;
+    }
+
+    big_integer operator*(int multiplier) const {
+        if (multiplier == 0) {
+            return big_integer(0);
+        }
+
+        unsigned int abs_multiplier;
+        bool multiplier_negative = (multiplier < 0);
+
+        if (multiplier == INT_MIN) {
+            abs_multiplier = static_cast<unsigned int>(INT_MAX) + 1;
+        }
+        else {
+            abs_multiplier = std::abs(multiplier);
+        }
+
+        big_integer result;
+        result.is_negative = is_negative != multiplier_negative;
+        result.digits.clear();
+
+        int carry = 0;
+        for (size_t i = 0; i < digits.size() || carry; ++i) {
+            int product = carry;
+            if (i < digits.size()) {
+                product += digits[i] * abs_multiplier;
+            }
+
+            result.digits.push_back(product % 10);
+            carry = product / 10;
+        }
+
+        result.remove_leading_zeros();
+        return result;
+    }
+
+    bool operator==(const big_integer& other) const {
+        if (is_negative != other.is_negative) {
+            return false;
+        }
+        return digits == other.digits;
+    }
+
+    bool operator!=(const big_integer& other) const {
+        return !(*this == other);
+    }
+
+    bool operator<(const big_integer& other) const {
+        if (is_negative != other.is_negative) {
+            return is_negative;
+        }
+
+        if (is_negative) {
+            return !abs_greater_than(other) && !abs_equal(other);
+        }
+
+        return !abs_greater_than(other) && !abs_equal(other);
+    }
+
+    bool operator>(const big_integer& other) const {
+        return other < *this;
+    }
+
+    bool operator<=(const big_integer& other) const {
+        return !(*this > other);
+    }
+
+    bool operator>=(const big_integer& other) const {
+        return !(*this < other);
     }
 
     std::string to_string() const {
@@ -235,4 +314,4 @@ int main() {
     std::cout << multiplied2 << std::endl;
 
     return 0;
-}}
+}
