@@ -1,128 +1,393 @@
 #include "ClientManager.h"
 #include <iostream>
-#include <sstream>
 #include <stdexcept>
+#include <sstream>
+#include <chrono>
+#include <iomanip>
 
-ClientManager::ClientManager(const std::string& dbPath) : dbPath(dbPath), db(nullptr) {
+ClientManager::ClientManager(const std::string& dbPath, bool enableLogging)
+    : db(nullptr), loggingEnabled(enableLogging) {
     int rc = sqlite3_open(dbPath.c_str(), &db);
     if (rc != SQLITE_OK) {
-        throw std::runtime_error("Не удалось открыть базу данных: " + std::string(sqlite3_errmsg(db)));
+        std::string error = "Не удалось открыть БД: " + std::string(sqlite3_errmsg(db));
+        sqlite3_close(db);
+        throw std::runtime_error(error);
     }
+    log("База данных открыта: " + dbPath);
 }
 
 ClientManager::~ClientManager() {
     if (db) {
         sqlite3_close(db);
+        log("База данных закрыта");
     }
 }
 
-bool ClientManager::executeQuery(const std::string& query) {
+void ClientManager::log(const std::string& message) const {
+    if (loggingEnabled) {
+        auto now = std::chrono::system_clock::now();
+        auto time = std::chrono::system_clock::to_time_t(now);
+        std::cout << "[LOG] " << std::put_time(std::localtime(&time), "%Y-%m-%d %H:%M:%S")
+            << " - " << message << std::endl;
+    }
+}
+
+void ClientManager::checkDbError(int rc, const std::string& context) const {
+    if (rc != SQLITE_OK && rc != SQLITE_DONE && rc != SQLITE_ROW) {
+        std::string error = "Ошибка SQLite в " + context + ": " +
+            std::string(sqlite3_errmsg(db));
+        log(error);
+        throw std::runtime_error(error);
+    }
+}
+
+void ClientManager::executeQuery(const std::string& query) {
     char* errMsg = nullptr;
     int rc = sqlite3_exec(db, query.c_str(), nullptr, nullptr, &errMsg);
     if (rc != SQLITE_OK) {
-        std::cerr << "Ошибка SQL: " << errMsg << std::endl;
+        std::string error = "Ошибка выполнения запроса: " + std::string(errMsg);
         sqlite3_free(errMsg);
-        return false;
+        throw std::runtime_error(error);
     }
-    return true;
-}
-
-int ClientManager::getLastInsertId() {
-    return sqlite3_last_insert_rowid(db);
 }
 
 bool ClientManager::createTables() {
-    const std::string createClientsTable =
-        "CREATE TABLE IF NOT EXISTS clients ("
-        "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "first_name VARCHAR(50) NOT NULL,"
-        "last_name VARCHAR(50) NOT NULL,"
-        "email VARCHAR(100) UNIQUE NOT NULL,"
-        "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
-        "updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
-        ");";
+    try {
+        const std::string createClients = R"(
+            CREATE TABLE IF NOT EXISTS clients (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                first_name TEXT NOT NULL,
+                last_name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+        )";
 
-    const std::string createPhonesTable =
-        "CREATE TABLE IF NOT EXISTS phones ("
-        "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "client_id INTEGER NOT NULL,"
-        "phone_number VARCHAR(20) NOT NULL,"
-        "phone_type VARCHAR(20) DEFAULT 'mobile',"
-        "is_primary BOOLEAN DEFAULT 0,"
-        "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
-        "FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,"
-        "UNIQUE(client_id, phone_number)"
-        ");";
+        const std::string createPhones = R"(
+            CREATE TABLE IF NOT EXISTS phones (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                client_id INTEGER NOT NULL,
+                number TEXT NOT NULL UNIQUE,
+                type TEXT DEFAULT 'mobile',
+                is_primary BOOLEAN DEFAULT 0,
+                FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
+            );
+        )";
 
-    const std::string createIndexes =
-        "CREATE INDEX IF NOT EXISTS idx_clients_email ON clients(email);"
-        "CREATE INDEX IF NOT EXISTS idx_clients_name ON clients(first_name, last_name);"
-        "CREATE INDEX IF NOT EXISTS idx_phones_number ON phones(phone_number);"
-        "CREATE INDEX IF NOT EXISTS idx_phones_client ON phones(client_id);";
+        const std::string createTrigger = R"(
+            CREATE TRIGGER IF NOT EXISTS update_client_timestamp 
+            AFTER UPDATE ON clients
+            BEGIN
+                UPDATE clients SET updated_at = CURRENT_TIMESTAMP WHERE id = NEW.id;
+            END;
+        )";
 
-    return executeQuery(createClientsTable) &&
-        executeQuery(createPhonesTable) &&
-        executeQuery(createIndexes);
-}
+        executeQuery(createClients);
+        executeQuery(createPhones);
+        executeQuery(createTrigger);
 
-bool ClientManager::addClient(const std::string& firstName, const std::string& lastName,
-    const std::string& email) {
-    std::stringstream query;
-    query << "INSERT INTO clients (first_name, last_name, email) VALUES ('"
-        << firstName << "', '" << lastName << "', '" << email << "');";
-    return executeQuery(query.str());
-}
-
-bool ClientManager::addPhone(int clientId, const std::string& phoneNumber,
-    const std::string& phoneType, bool isPrimary) {
-    Client* client = findClientById(clientId);
-    if (!client) {
-        std::cerr << "Клиент с ID " << clientId << " не найден." << std::endl;
-        return false;
+        log("Таблицы успешно созданы");
+        return true;
     }
-    delete client;
+    catch (const std::exception& e) {
+        log("Ошибка создания таблиц: " + std::string(e.what()));
+        throw;
+    }
+}
 
-    if (hasPhoneNumber(clientId, phoneNumber)) {
-        std::cerr << "Номер телефона уже существует для этого клиента." << std::endl;
-        return false;
+void ClientManager::addClient(const std::string& firstName, const std::string& lastName,
+    const std::string& email) {
+    std::string query = "INSERT INTO clients (first_name, last_name, email) VALUES (?, ?, ?)";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare addClient");
+
+    sqlite3_bind_text(stmt, 1, firstName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, lastName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, email.c_str(), -1, SQLITE_STATIC);
+
+    rc = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    if (rc != SQLITE_DONE) {
+        throw std::runtime_error("Ошибка добавления клиента: " + std::string(sqlite3_errmsg(db)));
+    }
+
+    log("Добавлен клиент: " + firstName + " " + lastName);
+}
+
+void ClientManager::updateClient(int clientId, const std::string& firstName,
+    const std::string& lastName, const std::string& email) {
+    if (!clientExists(clientId)) {
+        throw std::runtime_error("Клиент с ID " + std::to_string(clientId) + " не найден");
+    }
+
+    std::string query = "UPDATE clients SET first_name = ?, last_name = ?, email = ? WHERE id = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare updateClient");
+
+    sqlite3_bind_text(stmt, 1, firstName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, lastName.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, email.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 4, clientId);
+
+    rc = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    if (rc != SQLITE_DONE) {
+        throw std::runtime_error("Ошибка обновления клиента: " + std::string(sqlite3_errmsg(db)));
+    }
+
+    log("Обновлен клиент ID: " + std::to_string(clientId));
+}
+
+void ClientManager::deleteClient(int clientId) {
+    if (!clientExists(clientId)) {
+        throw std::runtime_error("Клиент с ID " + std::to_string(clientId) + " не найден");
+    }
+
+    std::string query = "DELETE FROM clients WHERE id = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare deleteClient");
+
+    sqlite3_bind_int(stmt, 1, clientId);
+
+    rc = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    if (rc != SQLITE_DONE) {
+        throw std::runtime_error("Ошибка удаления клиента: " + std::string(sqlite3_errmsg(db)));
+    }
+
+    log("Удален клиент ID: " + std::to_string(clientId));
+}
+
+Client* ClientManager::findClientById(int clientId) {
+    std::string query = "SELECT * FROM clients WHERE id = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare findClientById");
+
+    sqlite3_bind_int(stmt, 1, clientId);
+
+    Client* client = nullptr;
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        client = clientFromStatement(stmt);
+        if (client) {
+            client->phones = loadPhonesForClient(clientId);
+        }
+    }
+
+    sqlite3_finalize(stmt);
+    return client;
+}
+
+std::vector<Client> ClientManager::findClients(const std::string& searchTerm) {
+    std::vector<Client> result;
+
+    std::string query = R"(
+        SELECT DISTINCT c.* FROM clients c
+        LEFT JOIN phones p ON c.id = p.client_id
+        WHERE c.first_name LIKE ? OR c.last_name LIKE ? OR c.email LIKE ? OR p.number LIKE ?
+    )";
+
+    sqlite3_stmt* stmt = nullptr;
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare findClients");
+
+    std::string pattern = "%" + searchTerm + "%";
+    sqlite3_bind_text(stmt, 1, pattern.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, pattern.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, pattern.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, pattern.c_str(), -1, SQLITE_STATIC);
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        Client* client = clientFromStatement(stmt);
+        if (client) {
+            result.push_back(*client);
+            delete client;
+        }
+    }
+
+    sqlite3_finalize(stmt);
+
+    loadPhonesForClients(result);
+
+    return result;
+}
+
+std::vector<Client> ClientManager::findAllClients() {
+    std::vector<Client> result;
+
+    std::string query = "SELECT * FROM clients ORDER BY id";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare findAllClients");
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        Client* client = clientFromStatement(stmt);
+        if (client) {
+            result.push_back(*client);
+            delete client;
+        }
+    }
+
+    sqlite3_finalize(stmt);
+    loadPhonesForClients(result);
+
+    return result;
+}
+
+void ClientManager::addPhone(int clientId, const std::string& number,
+    const std::string& type, bool isPrimary) {
+    if (!clientExists(clientId)) {
+        throw std::runtime_error("Клиент с ID " + std::to_string(clientId) + " не найден");
+    }
+
+    std::string query = "INSERT INTO phones (client_id, number, type, is_primary) VALUES (?, ?, ?, ?)";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare addPhone");
+
+    sqlite3_bind_int(stmt, 1, clientId);
+    sqlite3_bind_text(stmt, 2, number.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, type.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_int(stmt, 4, isPrimary ? 1 : 0);
+
+    rc = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    if (rc != SQLITE_DONE) {
+        throw std::runtime_error("Ошибка добавления телефона: " + std::string(sqlite3_errmsg(db)));
     }
 
     if (isPrimary) {
-        std::stringstream updateQuery;
-        updateQuery << "UPDATE phones SET is_primary = 0 WHERE client_id = " << clientId << ";";
-        executeQuery(updateQuery.str());
+        setPrimaryPhone(clientId, sqlite3_last_insert_rowid(db));
     }
 
-    std::stringstream query;
-    query << "INSERT INTO phones (client_id, phone_number, phone_type, is_primary) VALUES ("
-        << clientId << ", '" << phoneNumber << "', '" << phoneType << "', "
-        << (isPrimary ? 1 : 0) << ");";
-    return executeQuery(query.str());
+    log("Добавлен телефон для клиента ID: " + std::to_string(clientId));
 }
 
-bool ClientManager::updateClient(int clientId, const std::string& firstName,
-    const std::string& lastName, const std::string& email) {
-    std::stringstream query;
-    query << "UPDATE clients SET first_name = '" << firstName
-        << "', last_name = '" << lastName
-        << "', email = '" << email
-        << "', updated_at = CURRENT_TIMESTAMP WHERE id = " << clientId << ";";
-    return executeQuery(query.str());
+void ClientManager::deletePhone(int phoneId) {
+    std::string query = "DELETE FROM phones WHERE id = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare deletePhone");
+
+    sqlite3_bind_int(stmt, 1, phoneId);
+
+    rc = sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+
+    if (rc != SQLITE_DONE) {
+        throw std::runtime_error("Ошибка удаления телефона: " + std::string(sqlite3_errmsg(db)));
+    }
+
+    if (sqlite3_changes(db) == 0) {
+        throw std::runtime_error("Телефон с ID " + std::to_string(phoneId) + " не найден");
+    }
+
+    log("Удален телефон ID: " + std::to_string(phoneId));
 }
 
-bool ClientManager::deletePhone(int phoneId) {
-    std::stringstream query;
-    query << "DELETE FROM phones WHERE id = " << phoneId << ";";
-    return executeQuery(query.str());
+void ClientManager::setPrimaryPhone(int clientId, int phoneId) {
+    if (!clientExists(clientId)) {
+        throw std::runtime_error("Клиент с ID " + std::to_string(clientId) + " не найден");
+    }
+
+    executeQuery("BEGIN TRANSACTION");
+
+    try {
+        std::string resetQuery = "UPDATE phones SET is_primary = 0 WHERE client_id = ?";
+        sqlite3_stmt* resetStmt = nullptr;
+        int rc = sqlite3_prepare_v2(db, resetQuery.c_str(), -1, &resetStmt, nullptr);
+        checkDbError(rc, "prepare setPrimaryPhone reset");
+
+        sqlite3_bind_int(resetStmt, 1, clientId);
+        rc = sqlite3_step(resetStmt);
+        sqlite3_finalize(resetStmt);
+
+        if (rc != SQLITE_DONE) {
+            throw std::runtime_error("Ошибка сброса основных телефонов");
+        }
+
+        std::string setQuery = "UPDATE phones SET is_primary = 1 WHERE id = ? AND client_id = ?";
+        sqlite3_stmt* setStmt = nullptr;
+        rc = sqlite3_prepare_v2(db, setQuery.c_str(), -1, &setStmt, nullptr);
+        checkDbError(rc, "prepare setPrimaryPhone set");
+
+        sqlite3_bind_int(setStmt, 1, phoneId);
+        sqlite3_bind_int(setStmt, 2, clientId);
+
+        rc = sqlite3_step(setStmt);
+        sqlite3_finalize(setStmt);
+
+        if (rc != SQLITE_DONE) {
+            throw std::runtime_error("Ошибка установки основного телефона");
+        }
+
+        if (sqlite3_changes(db) == 0) {
+            throw std::runtime_error("Телефон с ID " + std::to_string(phoneId) +
+                " не принадлежит клиенту " + std::to_string(clientId));
+        }
+
+        executeQuery("COMMIT");
+        log("Установлен основной телефон ID: " + std::to_string(phoneId) +
+            " для клиента ID: " + std::to_string(clientId));
+    }
+    catch (...) {
+        executeQuery("ROLLBACK");
+        throw;
+    }
 }
 
-bool ClientManager::deleteClient(int clientId) {
-    std::stringstream query;
-    query << "DELETE FROM clients WHERE id = " << clientId << ";";
-    return executeQuery(query.str());
+bool ClientManager::hasPhoneNumber(const std::string& number) {
+    std::string query = "SELECT COUNT(*) FROM phones WHERE number = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare hasPhoneNumber");
+
+    sqlite3_bind_text(stmt, 1, number.c_str(), -1, SQLITE_STATIC);
+
+    bool exists = false;
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        exists = sqlite3_column_int(stmt, 0) > 0;
+    }
+
+    sqlite3_finalize(stmt);
+    return exists;
 }
 
-Client* ClientManager::fetchClientFromStatement(sqlite3_stmt* stmt) {
+bool ClientManager::clientExists(int clientId) {
+    std::string query = "SELECT COUNT(*) FROM clients WHERE id = ?";
+    sqlite3_stmt* stmt = nullptr;
+
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare clientExists");
+
+    sqlite3_bind_int(stmt, 1, clientId);
+
+    bool exists = false;
+    if (sqlite3_step(stmt) == SQLITE_ROW) {
+        exists = sqlite3_column_int(stmt, 0) > 0;
+    }
+
+    sqlite3_finalize(stmt);
+    return exists;
+}
+
+Client* ClientManager::clientFromStatement(sqlite3_stmt* stmt) {
     Client* client = new Client();
     client->id = sqlite3_column_int(stmt, 0);
     client->firstName = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
@@ -133,115 +398,23 @@ Client* ClientManager::fetchClientFromStatement(sqlite3_stmt* stmt) {
     return client;
 }
 
-void ClientManager::fetchPhonesForClient(Client& client) {
-    std::stringstream query;
-    query << "SELECT id, phone_number, phone_type, is_primary, created_at FROM phones "
-        << "WHERE client_id = " << client.id << " ORDER BY is_primary DESC, created_at;";
+std::vector<Phone> ClientManager::loadPhonesForClient(int clientId) {
+    std::vector<Phone> phones;
+    std::string query = "SELECT * FROM phones WHERE client_id = ?";
+    sqlite3_stmt* stmt = nullptr;
 
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, query.str().c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        return;
-    }
+    int rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    checkDbError(rc, "prepare loadPhonesForClient");
+
+    sqlite3_bind_int(stmt, 1, clientId);
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        Client::Phone phone;
+        Phone phone;
         phone.id = sqlite3_column_int(stmt, 0);
-        phone.number = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        phone.type = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
-        phone.isPrimary = sqlite3_column_int(stmt, 3) != 0;
-        phone.createdAt = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
-        client.phones.push_back(phone);
-    }
-    sqlite3_finalize(stmt);
-}
-
-std::vector<Client> ClientManager::findClients(const std::string& searchTerm) {
-    std::vector<Client> results;
-
-    std::stringstream query;
-    query << "SELECT id, first_name, last_name, email, created_at, updated_at FROM clients "
-        << "WHERE first_name LIKE '%" << searchTerm << "%' "
-        << "OR last_name LIKE '%" << searchTerm << "%' "
-        << "OR email LIKE '%" << searchTerm << "%' "
-        << "OR id IN (SELECT client_id FROM phones WHERE phone_number LIKE '%" << searchTerm << "%') "
-        << "ORDER BY last_name, first_name;";
-
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, query.str().c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        std::cerr << "Не удалось подготовить запрос: " << sqlite3_errmsg(db) << std::endl;
-        return results;
-    }
-
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-        std::unique_ptr<Client> client(fetchClientFromStatement(stmt));
-        fetchPhonesForClient(*client);
-        results.push_back(*client);
-    }
-
-    sqlite3_finalize(stmt);
-    return results;
-}
-
-Client* ClientManager::findClientById(int clientId) {
-    std::stringstream query;
-    query << "SELECT id, first_name, last_name, email, created_at, updated_at FROM clients "
-        << "WHERE id = " << clientId << ";";
-
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, query.str().c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        std::cerr << "Не удалось подготовить запрос: " << sqlite3_errmsg(db) << std::endl;
-        return nullptr;
-    }
-
-    Client* client = nullptr;
-    if (sqlite3_step(stmt) == SQLITE_ROW) {
-        client = fetchClientFromStatement(stmt);
-        fetchPhonesForClient(*client);
-    }
-
-    sqlite3_finalize(stmt);
-    return client;
-}
-
-std::vector<Client> ClientManager::findAllClients() {
-    return findClients("");
-}
-
-bool ClientManager::setPrimaryPhone(int clientId, int phoneId) {
-    std::stringstream resetQuery;
-    resetQuery << "UPDATE phones SET is_primary = 0 WHERE client_id = " << clientId << ";";
-    if (!executeQuery(resetQuery.str())) {
-        return false;
-    }
-
-    std::stringstream setQuery;
-    setQuery << "UPDATE phones SET is_primary = 1 WHERE id = " << phoneId
-        << " AND client_id = " << clientId << ";";
-    return executeQuery(setQuery.str());
-}
-
-std::vector<Client::Phone> ClientManager::getClientPhones(int clientId) {
-    std::vector<Client::Phone> phones;
-    std::stringstream query;
-    query << "SELECT id, phone_number, phone_type, is_primary, created_at FROM phones "
-        << "WHERE client_id = " << clientId << " ORDER BY is_primary DESC, created_at;";
-
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, query.str().c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        return phones;
-    }
-
-    while (sqlite3_step(stmt) == SQLITE_ROW) {
-        Client::Phone phone;
-        phone.id = sqlite3_column_int(stmt, 0);
-        phone.number = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        phone.type = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
-        phone.isPrimary = sqlite3_column_int(stmt, 3) != 0;
-        phone.createdAt = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 4));
+        phone.clientId = sqlite3_column_int(stmt, 1);
+        phone.number = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        phone.type = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 3));
+        phone.isPrimary = sqlite3_column_int(stmt, 4) != 0;
         phones.push_back(phone);
     }
 
@@ -249,22 +422,8 @@ std::vector<Client::Phone> ClientManager::getClientPhones(int clientId) {
     return phones;
 }
 
-bool ClientManager::hasPhoneNumber(int clientId, const std::string& phoneNumber) {
-    std::stringstream query;
-    query << "SELECT COUNT(*) FROM phones WHERE client_id = " << clientId
-        << " AND phone_number = '" << phoneNumber << "';";
-
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, query.str().c_str(), -1, &stmt, nullptr);
-    if (rc != SQLITE_OK) {
-        return false;
+void ClientManager::loadPhonesForClients(std::vector<Client>& clients) {
+    for (auto& client : clients) {
+        client.phones = loadPhonesForClient(client.id);
     }
-
-    bool exists = false;
-    if (sqlite3_step(stmt) == SQLITE_ROW) {
-        exists = sqlite3_column_int(stmt, 0) > 0;
-    }
-
-    sqlite3_finalize(stmt);
-    return exists;
 }

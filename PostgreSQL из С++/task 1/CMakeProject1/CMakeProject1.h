@@ -1,10 +1,18 @@
-﻿#ifndef CLIENT_MANAGER_H
-#define CLIENT_MANAGER_H
+﻿#ifndef CLIENTMANAGER_H
+#define CLIENTMANAGER_H
 
 #include <string>
 #include <vector>
 #include <memory>
-#include <libpq-fe.h>
+#include <sqlite3.h>
+
+struct Phone {
+    int id;
+    int clientId;
+    std::string number;
+    std::string type;
+    bool isPrimary;
+};
 
 struct Client {
     int id;
@@ -13,50 +21,47 @@ struct Client {
     std::string email;
     std::string createdAt;
     std::string updatedAt;
-
-    struct Phone {
-        int id;
-        std::string number;
-        std::string type;
-        bool isPrimary;
-        std::string createdAt;
-    };
     std::vector<Phone> phones;
 };
 
 class ClientManager {
-private:
-    PGconn* conn;
-    std::string connInfo;
-
-    bool executeQuery(const std::string& query);
-    PGresult* executeQueryWithResult(const std::string& query);
-    int getLastInsertId();
-    Client* fetchClientFromResult(PGresult* res, int row);
-    void fetchPhonesForClient(Client& client);
-    std::string escapeString(const std::string& str);
-
 public:
-    ClientManager(const std::string& connInfo);
+    explicit ClientManager(const std::string& dbPath, bool enableLogging = false);
     ~ClientManager();
 
-    bool createTables();
-    bool addClient(const std::string& firstName, const std::string& lastName,
-        const std::string& email);
-    bool addPhone(int clientId, const std::string& phoneNumber,
-        const std::string& phoneType = "mobile", bool isPrimary = false);
-    bool updateClient(int clientId, const std::string& firstName,
-        const std::string& lastName, const std::string& email);
-    bool deletePhone(int phoneId);
-    bool deleteClient(int clientId);
+    ClientManager(const ClientManager&) = delete;
+    ClientManager& operator=(const ClientManager&) = delete;
 
-    std::vector<Client> findClients(const std::string& searchTerm);
+    void addClient(const std::string& firstName, const std::string& lastName,
+        const std::string& email);
+    void updateClient(int clientId, const std::string& firstName,
+        const std::string& lastName, const std::string& email);
+    void deleteClient(int clientId);
+
     Client* findClientById(int clientId);
+    std::vector<Client> findClients(const std::string& searchTerm);
     std::vector<Client> findAllClients();
 
-    bool setPrimaryPhone(int clientId, int phoneId);
-    std::vector<Client::Phone> getClientPhones(int clientId);
-    bool hasPhoneNumber(int clientId, const std::string& phoneNumber);
+    void addPhone(int clientId, const std::string& number,
+        const std::string& type = "mobile", bool isPrimary = false);
+    void deletePhone(int phoneId);
+    void setPrimaryPhone(int clientId, int phoneId);
+    bool hasPhoneNumber(const std::string& number);
+
+    bool createTables();
+
+private:
+    sqlite3* db;
+    bool loggingEnabled;
+
+    void log(const std::string& message) const;
+    void executeQuery(const std::string& query);
+    void checkDbError(int rc, const std::string& context) const;
+
+    Client* clientFromStatement(sqlite3_stmt* stmt);
+    std::vector<Phone> loadPhonesForClient(int clientId);
+    void loadPhonesForClients(std::vector<Client>& clients);
+    bool clientExists(int clientId);
 };
 
 #endif
