@@ -1,0 +1,17 @@
+FROM ubuntu:16.04
+
+RUN apt update && apt install -y \
+    gcc \
+    clang \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY main.c .
+
+RUN gcc -Wall -Wextra -O2 -o app_gcc main.c
+RUN clang -Wall -Wextra -O2 -o app_clang main.c
+
+CMD echo "=== GCC VERSION ===" && ./app_gcc && \
+    echo "" && \
+    echo "=== CLANG VERSION ===" && ./app_clang
