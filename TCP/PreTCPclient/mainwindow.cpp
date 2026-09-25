@@ -1,7 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include <QDateTime>
-#include <QStringList>
+#include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,17 +9,45 @@ MainWindow::MainWindow(QWidget *parent)
 
     client = new TCPclient(this);
 
-    // Подключение сигналов клиента к слотам окна
-    connect(client, &TCPclient::sig_sendTime, this, &MainWindow::DisplayTime);
-    connect(client, &TCPclient::sig_sendStat, this, &MainWindow::DisplayStat);
-    connect(client, &TCPclient::sig_connectStatus, this, &MainWindow::DisplayConnectionStatus);
-    connect(client, &TCPclient::sig_Disconnected, this, &MainWindow::DisplayDisconnected);
+    ui->le_data->setEnabled(false);
+    ui->pb_request->setEnabled(false);
+    ui->lb_connectStatus->setText("Отключено");
+    ui->lb_connectStatus->setStyleSheet("color: red");
 
-    // Подключение кнопки "Подключиться"
-    connect(ui->pb_connect, &QPushButton::clicked, this, &MainWindow::on_pb_connect_clicked);
+    connect(client, &TCPclient::sig_Disconnected, this, [this]{
+        isConnected = false;
+        ui->lb_connectStatus->setText("Отключено");
+        ui->lb_connectStatus->setStyleSheet("color: red");
+        ui->pb_connect->setText("Подключиться");
+        ui->le_data->setEnabled(false);
+        ui->pb_request->setEnabled(false);
+        ui->spB_port->setEnabled(true);
+        ui->spB_ip1->setEnabled(true);
+        ui->spB_ip2->setEnabled(true);
+        ui->spB_ip3->setEnabled(true);
+        ui->spB_ip4->setEnabled(true);
+    });
 
-    // Кнопка "Отправить" (pb_request) подключена через auto-connect (on_pb_request_clicked)
-    // Кнопка "Очистить" (pb_clear) уже подключена в .ui файле к tb_result->clear()
+    connect(client, &TCPclient::sig_sendTime,
+            this, &MainWindow::DisplayTime);
+
+    connect(client, &TCPclient::sig_sendFreeSize,
+            this, &MainWindow::DisplayFreeSpace);
+
+    connect(client, &TCPclient::sig_SendReplyForSetData,
+            this, &MainWindow::SetDataReply);
+
+    connect(client, &TCPclient::sig_sendStat,
+            this, &MainWindow::DisplayStat);
+
+    connect(client, &TCPclient::sig_Error,
+            this, &MainWindow::DisplayError);
+
+    connect(client, &TCPclient::sig_Success,
+            this, &MainWindow::DisplaySuccess);
+
+    connect(client, &TCPclient::sig_connectStatus,
+            this, &MainWindow::DisplayConnectStatus);
 }
 
 MainWindow::~MainWindow()
@@ -29,68 +55,151 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// === Реализация методов по заданию ===
-
-void MainWindow::DisplayTime(const QDateTime &time)
+void MainWindow::DisplayTime(QDateTime time)
 {
-    // У нас нет lbl_time, поэтому выводим в tb_result (лог)
-    ui->tb_result->append("Получено время от сервера: " + time.toString("dd.MM.yyyy hh:mm:ss"));
+    ui->tb_result->append("Время сервера: "
+                          + time.toString("HH:mm:ss dd.MM.yyyy"));
 }
 
-void MainWindow::DisplayStat(const StatStruct &stat)
+void MainWindow::DisplayFreeSpace(uint32_t freeSpace)
 {
-    // У нас нет lbl_stat, поэтому выводим в tb_result (лог)
-    QString statText = QString("Статистика сервера -> Клиентов: %1, Статус: %2")
-                           .arg(stat.clientCount)
-                           .arg(stat.serverStatus);
+    ui->tb_result->append("Свободное место на сервере: "
+                          + QString::number(freeSpace) + " байт");
+}
 
-    ui->tb_result->append(statText);
+void MainWindow::SetDataReply(QString replyString)
+{
+    ui->tb_result->append("Ответ на отправку данных: " + replyString);
+}
+
+void MainWindow::DisplayStat(StatServer stat)
+{
+    ui->tb_result->append("=== Статистика сервера ===");
+    ui->tb_result->append("Принято байт:      " + QString::number(stat.incBytes));
+    ui->tb_result->append("Передано байт:     " + QString::number(stat.sendBytes));
+    ui->tb_result->append("Принято пакетов:   " + QString::number(stat.revPck));
+    ui->tb_result->append("Передано пакетов:  " + QString::number(stat.sendPck));
+    ui->tb_result->append("Время работы:      " + QString::number(stat.workTime) + " сек");
+    ui->tb_result->append("Клиентов:          " + QString::number(stat.clients));
+    ui->tb_result->append("===========================");
+}
+
+void MainWindow::DisplayError(uint16_t error)
+{
+    switch (error) {
+    case ERR_NO_FREE_SPACE:
+        ui->tb_result->append("Ошибка: недостаточно свободного места на сервере");
+        break;
+    case ERR_CONNECT_TO_HOST:
+        ui->tb_result->append("Ошибка: не удалось подключиться к серверу");
+        break;
+    case ERR_NO_FUNCT:
+        ui->tb_result->append("Ошибка: такой функционал не реализован");
+        break;
+    default:
+        ui->tb_result->append("Неизвестная ошибка: " + QString::number(error));
+        break;
+    }
+}
+
+void MainWindow::DisplaySuccess(uint16_t typeMess)
+{
+    switch (typeMess) {
+    case CLEAR_DATA:
+        ui->tb_result->append("Память на сервере успешно очищена");
+        break;
+    default:
+        ui->tb_result->append("Сообщение успешно обработано, код: "
+                              + QString::number(typeMess));
+        break;
+    }
+}
+
+void MainWindow::DisplayConnectStatus(uint16_t status)
+{
+    if (status == ERR_CONNECT_TO_HOST) {
+        ui->tb_result->append("Ошибка подключения к порту: "
+                              + QString::number(ui->spB_port->value()));
+    }
+    else {
+        isConnected = true;
+        ui->lb_connectStatus->setText("Подключено");
+        ui->lb_connectStatus->setStyleSheet("color: green");
+        ui->pb_connect->setText("Отключиться");
+        ui->spB_port->setEnabled(false);
+        ui->pb_request->setEnabled(true);
+        ui->spB_ip1->setEnabled(false);
+        ui->spB_ip2->setEnabled(false);
+        ui->spB_ip3->setEnabled(false);
+        ui->spB_ip4->setEnabled(false);
+    }
+}
+
+void MainWindow::on_pb_connect_clicked()
+{
+    qDebug() << ">>> Кнопка нажата";
+
+    if (!isConnected) {
+        uint16_t port = uint16_t(ui->spB_port->value());
+
+        QString ip = QString::number(ui->spB_ip4->value()) + "." +
+                     QString::number(ui->spB_ip3->value()) + "." +
+                     QString::number(ui->spB_ip2->value()) + "." +
+                     QString::number(ui->spB_ip1->value());
+
+        qDebug() << ">>> IP:" << ip << "PORT:" << port;
+        client->ConnectToHost(QHostAddress(ip), port);
+    }
+    else {
+        client->DisconnectFromHost();
+    }
 }
 
 void MainWindow::on_pb_request_clicked()
 {
-    ui->tb_result->append("Отправка запроса на сервер...");
+    ServiceHeader header;
+    header.id     = ID;
+    header.status = STATUS_SUCCES;
+    header.len    = 0;
 
-    // Можно также проверить, что выбрано в cb_request, и отправить разные команды,
-    // но по заданию достаточно вызвать SendRequest.
-    client->SendRequest();
-}
+    switch (ui->cb_request->currentIndex()) {
 
-// === Вспомогательные методы ===
+    case 0:
+        header.idData = GET_TIME;
+        client->SendRequest(header);
+        break;
 
-void MainWindow::on_pb_connect_clicked()
-{
-    // Собираем IP из четырех спинбоксов
-    QString host = QString("%1.%2.%3.%4")
-                       .arg(ui->spB_ip1->value())
-                       .arg(ui->spB_ip2->value())
-                       .arg(ui->spB_ip3->value())
-                       .arg(ui->spB_ip4->value());
+    case 1:
+        header.idData = GET_SIZE;
+        client->SendRequest(header);
+        break;
 
-    int port = ui->spB_port->value();
+    case 2:
+        header.idData = GET_STAT;
+        client->SendRequest(header);
+        break;
 
-    ui->tb_result->append(QString("Попытка подключения к %1:%2...").arg(host).arg(port));
-    client->ConnectToHost(host, port);
-}
-void MainWindow::on_pb_disconnect_clicked()
-{
-    ui->tb_result->append("Отключение от сервера...");
-    client->DisconnectFromHost();
-}
+    case 3:
+        header.idData = SET_DATA;
+        client->SendData(header, ui->le_data->text());
+        break;
 
-void MainWindow::DisplayConnectionStatus(bool status)
-{
-    if (status) {
-        ui->lb_connectStatus->setText("Подключено");
-        ui->tb_result->append("Успешно подключено к серверу.");
-    } else {
-        ui->lb_connectStatus->setText("Не подключено");
-        ui->tb_result->append("Соединение не установлено.");
+    case 4:
+        header.idData = CLEAR_DATA;
+        client->SendRequest(header);
+        break;
+
+    default:
+        ui->tb_result->append("Такой запрос не реализован в текущей версии");
+        break;
     }
 }
 
-void MainWindow::DisplayDisconnected()
+void MainWindow::on_cb_request_currentIndexChanged(int index)
 {
-    ui->lb_connectStatus->setText("Отключено");
-    ui->tb_result->append("Соединение с сервером разорвано.");
+    Q_UNUSED(index);
+    if (ui->cb_request->currentIndex() == 3)
+        ui->le_data->setEnabled(true);
+    else
+        ui->le_data->setEnabled(false);
 }

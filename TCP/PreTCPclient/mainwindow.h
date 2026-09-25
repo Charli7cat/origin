@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "structs.h"
 #include <QMainWindow>
+#include <QDateTime>
 #include "tcpclient.h"
 
 QT_BEGIN_NAMESPACE
@@ -14,22 +14,26 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
+    void on_pb_connect_clicked();
     void on_pb_request_clicked();
-    void on_pb_connect_clicked();    // Предполагаемый слот для подключения
-    void on_pb_disconnect_clicked(); // Предполагаемый слот для отключения
+    void on_cb_request_currentIndexChanged(int index);
 
-    // Слоты для приема сигналов от TCPclient
-    void DisplayTime(const QDateTime &time);
-    void DisplayStat(const StatStruct &stat);
-    void DisplayConnectionStatus(bool status);
-    void DisplayDisconnected();
+    void DisplayTime(QDateTime time);
+    void DisplayFreeSpace(uint32_t freeSpace);
+    void SetDataReply(QString replyString);
+    void DisplayStat(StatServer stat);
+    void DisplayError(uint16_t error);
+    void DisplaySuccess(uint16_t typeMess);
+    void DisplayConnectStatus(uint16_t status);
 
 private:
     Ui::MainWindow *ui;
     TCPclient *client;
+    bool isConnected = false;
 };
+
 #endif // MAINWINDOW_H

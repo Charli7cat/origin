@@ -57,7 +57,7 @@ TCPserver::TCPserver(QObject *parent, uint16_t bindPort)
     timer->start(1000);
     connect(timer, &QTimer::timeout, this, [&]{
 
-    workTime = workTime.addSecs(1);;
+        stat.workTime++;
 
     });
 

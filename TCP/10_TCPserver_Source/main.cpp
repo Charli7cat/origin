@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    TCPserver server(nullptr, 12345);
+    TCPserver server(nullptr, BIND_PORT);
 
     return a.exec();
 }

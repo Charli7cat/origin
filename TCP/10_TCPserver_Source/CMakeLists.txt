@@ -18,7 +18,6 @@ add_executable(10_TCPserver
   tcpserver.h
   tcpserver.cpp
   structs.h
-
 )
 
 target_link_libraries(10_TCPserver Qt6::Core
