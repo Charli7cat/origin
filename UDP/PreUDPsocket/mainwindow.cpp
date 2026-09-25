@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,10 +7,26 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    m_udpWorker = new UdpWorker(this);
+    udpWorker = new UDPworker(this);
+    udpWorker->InitSocket();
 
-    connect(m_udpWorker, &UdpWorker::datagramReceived,
-            this, &MainWindow::onDatagramReceived);
+    connect(udpWorker, &UDPworker::sig_sendTimeToGUI, this, &MainWindow::DisplayTime);
+    connect(udpWorker, &UDPworker::sig_sendMessageToGUI,
+            this, &MainWindow::DisplayMessage);
+
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, [&]{
+
+        QDateTime dateTime = QDateTime::currentDateTime();
+
+        QByteArray dataToSend;
+        QDataStream outStr(&dataToSend, QIODevice::WriteOnly);
+
+        outStr << dateTime;
+
+        udpWorker->SendDatagram(dataToSend);
+    });
+
 }
 
 MainWindow::~MainWindow()
@@ -18,26 +34,42 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_btnSendDatagram_clicked()
+void MainWindow::on_pb_send_clicked()
 {
-    const QString text = ui->lineEditMessage->text();
-    if (text.isEmpty()) return;
+    QString text = ui->le_message->text();
+    if (text.isEmpty())
+        return;
 
-    m_udpWorker->sendDatagram(text,
-                              QHostAddress::LocalHost,
-                              12345);
+    udpWorker->SendDatagram(text.toUtf8());
 }
 
-void MainWindow::onDatagramReceived(const QString &text,
-                                    const QHostAddress &senderAddress,
-                                    quint16 senderPort)
+void MainWindow::on_pb_start_clicked()
 {
-    const int sizeBytes = text.toUtf8().size();
-
-    QString message = QString(
-                          "Принято сообщение от %1, размер сообщения(байт) %2")
-                          .arg(senderAddress.toString())
-                          .arg(sizeBytes);
-
-    ui->textEditReceived->append(message);
+    timer->start(TIMER_DELAY);
 }
+
+void MainWindow::DisplayMessage(QString message)
+{
+    ui->te_result->append(message);
+}
+
+
+void MainWindow::DisplayTime(QDateTime data)
+{
+    counterPck++;
+    if(counterPck % 20 == 0){
+        ui->te_result->clear();
+    }
+
+    ui->te_result->append("Текущее время: " + data.toString() + ". "
+                "Принято пакетов " + QString::number(counterPck));
+
+
+}
+
+
+void MainWindow::on_pb_stop_clicked()
+{
+    timer->stop();
+}
+

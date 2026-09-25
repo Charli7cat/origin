@@ -1,47 +1,56 @@
 #include "udpworker.h"
+#include <QDataStream>
+#include <QIODevice>
+#include <QHostAddress>
 
-UdpWorker::UdpWorker(QObject *parent)
+UDPworker::UDPworker(QObject *parent)
     : QObject(parent)
-    , m_socket(new QUdpSocket(this))
+    , serviceUdpSocket(nullptr)
 {
-    if (!m_socket->bind(QHostAddress::LocalHost, 12345)) {
-        qWarning() << "Не удалось привязать сокет:"
-                   << m_socket->errorString();
-    }
-
-    connect(m_socket, &QUdpSocket::readyRead,
-            this, &UdpWorker::onReadyRead);
 }
 
-void UdpWorker::sendDatagram(const QString &text,
-                             const QHostAddress &address,
-                             quint16 port)
+void UDPworker::InitSocket()
 {
-    QByteArray data = text.toUtf8();
-    qint64 sent = m_socket->writeDatagram(data, address, port);
-    if (sent == -1) {
-        qWarning() << "Ошибка отправки:" << m_socket->errorString();
+    serviceUdpSocket = new QUdpSocket(this);
+
+    // Привязываемся к localhost:12345, чтобы принимать свои же датаграммы
+    serviceUdpSocket->bind(QHostAddress::LocalHost, BIND_PORT);
+
+    connect(serviceUdpSocket, &QUdpSocket::readyRead,
+            this, &UDPworker::readPendingDatagrams);
+}
+
+void UDPworker::readPendingDatagrams()
+{
+    // Пока есть непрочитанные датаграммы
+    while (serviceUdpSocket->hasPendingDatagrams()) {
+        QNetworkDatagram datagram = serviceUdpSocket->receiveDatagram();
+        ReadDatagram(datagram);
     }
 }
 
-bool UdpWorker::bind(quint16 port)
+void UDPworker::ReadDatagram(QNetworkDatagram datagram)
 {
-    return m_socket->bind(QHostAddress::LocalHost, port);
+    // По заданию выводим: адрес отправителя и размер сообщения
+    QByteArray data = datagram.data();
+    QString sender = datagram.senderAddress().toString()
+                     + ":" + QString::number(datagram.senderPort());
+
+    // Если хотите сохранить старую логику с QDateTime — оставьте её
+    // (она полезна при кнопке "Начать передачу"), но по заданию
+    // нужен вывод адреса и размера:
+
+    QString message = QString("Принято сообщение от %1, размер сообщения %2 байт")
+                          .arg(sender)
+                          .arg(data.size());
+
+    emit sig_sendMessageToGUI(message);
 }
 
-void UdpWorker::onReadyRead()
+void UDPworker::SendDatagram(QByteArray data)
 {
-    while (m_socket->hasPendingDatagrams()) {
-        QByteArray buffer;
-        buffer.resize(int(m_socket->pendingDatagramSize()));
-
-        QHostAddress senderAddress;
-        quint16 senderPort = 0;
-
-        m_socket->readDatagram(buffer.data(), buffer.size(),
-                               &senderAddress, &senderPort);
-
-        QString text = QString::fromUtf8(buffer);
-        emit datagramReceived(text, senderAddress, senderPort);
-    }
+    // Отправляем на localhost:BIND_PORT
+    serviceUdpSocket->writeDatagram(data,
+                                    QHostAddress::LocalHost,
+                                    BIND_PORT);
 }

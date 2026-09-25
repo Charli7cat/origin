@@ -3,30 +3,33 @@
 
 #include <QObject>
 #include <QUdpSocket>
-#include <QHostAddress>
+#include <QNetworkDatagram>
+#include <QHostAddress>        // <-- добавить
+#include <QDateTime>
+#include <QByteArray>          // <-- на всякий случай
 
-class UdpWorker : public QObject
+#define BIND_PORT 12345
+
+class UDPworker : public QObject
 {
     Q_OBJECT
+
 public:
-    explicit UdpWorker(QObject *parent = nullptr);
+    explicit UDPworker(QObject *parent = nullptr);
 
-    void sendDatagram(const QString &text,
-                      const QHostAddress &address = QHostAddress::LocalHost,
-                      quint16 port = 12345);
-
-    bool bind(quint16 port = 12345);
-
-signals:
-    void datagramReceived(const QString &text,
-                          const QHostAddress &senderAddress,
-                          quint16 senderPort);
+    void InitSocket();
+    void ReadDatagram(QNetworkDatagram datagram);
+    void SendDatagram(QByteArray data);
 
 private slots:
-    void onReadyRead();
+    void readPendingDatagrams();
 
 private:
-    QUdpSocket *m_socket = nullptr;
+    QUdpSocket* serviceUdpSocket;
+
+signals:
+    void sig_sendTimeToGUI(QDateTime data);
+    void sig_sendMessageToGUI(QString message);   // <-- см. Шаг 5
 };
 
-#endif
+#endif // UDPWORKER_H

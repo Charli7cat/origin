@@ -11,8 +11,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# --- Подключаем Network вместе с Widgets ---
-find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
+
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Network)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -23,15 +23,20 @@ set(PROJECT_SOURCES
         udpworker.cpp
 )
 
+
 qt_add_executable(PreUDPsocket
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
 )
 
-# --- Линкуем оба модуля ---
+
 target_link_libraries(PreUDPsocket PRIVATE
-        Qt6::Widgets
-        Qt6::Network
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+    Qt6::Network
 )
 
+
 qt_finalize_executable(PreUDPsocket)
+
