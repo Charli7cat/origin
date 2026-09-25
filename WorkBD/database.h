@@ -1,37 +1,13 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include <QObject>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-
-
-
-#define POSTGRE_DRIVER "QPSQL"
-#define DB_NAME "MyDB"
-
-//Количество полей данных необходимых для подключения к БД
-#define NUM_DATA_FOR_CONNECT_TO_DB 5
-
-//Перечисление полей данных
-enum fieldsForConnect{
-    hostName = 0,
-    dbName = 1,
-    login = 2,
-    pass = 3,
-    port = 4
-};
-
-//Типы запросов
-enum requestType{
-
-    requestAllFilms = 1,
-    requestComedy   = 2,
-    requestHorrors  = 3
-
-};
-
-
+#include <QSqlQueryModel>
+#include <QSqlTableModel>
+#include <QVector>
 
 class DataBase : public QObject
 {
@@ -42,24 +18,31 @@ public:
     ~DataBase();
 
     void AddDataBase(QString driver, QString nameDB = "");
-    void DisconnectFromDataBase(QString nameDb = "");
+    void ConnectToDataBase(QVector<QString> data);
+    void DisconnectFromDataBase(QString nameDb);
     void RequestToDB(QString request);
-    QSqlError GetLastError(void);
-    void ConnectToDataBase(QVector<QString> dataForConnect);
 
+    bool OpenTable(const QString &tableName);
+    bool SubmitAll();
+    void RevertAll();
+    bool AddRow();
+    bool RemoveRow(int row);
+
+    QSqlError GetLastError();
+
+    QSqlQueryModel* GetQueryModel() const { return queryModel; }
+    QSqlTableModel* GetTableModel() const { return tableModel; }
 
 signals:
-
-   void sig_SendDataFromDB(const QTableWidget *tableWg, int typeR);
-   void sig_SendStatusConnection(bool);
-
-
+    void sig_SendStatusConnection(bool status);
+    void sig_SendStatusRequest(QSqlError err);
 
 private:
+    QSqlDatabase   *dataBase   = nullptr;
+    QSqlQueryModel *queryModel = nullptr;
+    QSqlTableModel *tableModel = nullptr;
 
-    QSqlDatabase* dataBase;
-
-
+    enum Columns { hostName, dbName, login, pass, port };
 };
 
-#endif // DATABASE_H
+#endif

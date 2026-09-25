@@ -1,12 +1,14 @@
 #include "database.h"
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlRecord>
 
 DataBase::DataBase(QObject *parent)
     : QObject{parent}
 {
-
-    dataBase = new QSqlDatabase();
-
-
+    dataBase   = new QSqlDatabase();
+    queryModel = new QSqlQueryModel(this);
+    tableModel = new QSqlTableModel(this);
 }
 
 DataBase::~DataBase()
@@ -14,67 +16,92 @@ DataBase::~DataBase()
     delete dataBase;
 }
 
-/*!
- * \brief Метод добавляет БД к экземпляру класса QSqlDataBase
- * \param driver драйвер БД
- * \param nameDB имя БД (Если отсутствует Qt задает имя по умолчанию)
- */
 void DataBase::AddDataBase(QString driver, QString nameDB)
 {
-
     *dataBase = QSqlDatabase::addDatabase(driver, nameDB);
-
 }
 
-/*!
- * \brief Метод подключается к БД
- * \param для удобства передаем контейнер с данными необходимыми для подключения
- * \return возвращает тип ошибки
- */
 void DataBase::ConnectToDataBase(QVector<QString> data)
 {
-
     dataBase->setHostName(data[hostName]);
     dataBase->setDatabaseName(data[dbName]);
     dataBase->setUserName(data[login]);
     dataBase->setPassword(data[pass]);
     dataBase->setPort(data[port].toInt());
 
-
-    ///Тут должен быть код ДЗ
-
-
-    bool status;
-    status = dataBase->open( );
+    bool status = dataBase->open();
     emit sig_SendStatusConnection(status);
-
 }
-/*!
- * \brief Метод производит отключение от БД
- * \param Имя БД
- */
+
 void DataBase::DisconnectFromDataBase(QString nameDb)
 {
-
     *dataBase = QSqlDatabase::database(nameDb);
     dataBase->close();
-
 }
-/*!
- * \brief Метод формирует запрос к БД.
- * \param request - SQL запрос
- * \return
- */
+
 void DataBase::RequestToDB(QString request)
 {
+    if (!dataBase->isOpen()) {
+        emit sig_SendStatusRequest(
+            QSqlError("База данных не открыта", "", QSqlError::ConnectionError));
+        return;
+    }
 
-    ///Тут должен быть код ДЗ
+    queryModel->setQuery(request, *dataBase);
 
+    if (queryModel->lastError().isValid())
+        emit sig_SendStatusRequest(queryModel->lastError());
 }
 
-/*!
- * @brief Метод возвращает последнюю ошибку БД
- */
+
+bool DataBase::OpenTable(const QString &tableName)
+{
+    if (!dataBase->isOpen()) return false;
+
+    tableModel->setTable(tableName);
+    tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    tableModel->setSort(0, Qt::AscendingOrder);
+
+    if (!tableModel->select()) {
+        emit sig_SendStatusRequest(tableModel->lastError());
+        return false;
+    }
+
+    for (int i = 0; i < tableModel->columnCount(); ++i)
+        tableModel->setHeaderData(i, Qt::Horizontal,
+                                  tableModel->record().fieldName(i));
+    return true;
+}
+
+bool DataBase::SubmitAll()
+{
+    if (!tableModel->submitAll()) {
+        emit sig_SendStatusRequest(tableModel->lastError());
+        return false;
+    }
+    return true;
+}
+
+void DataBase::RevertAll()
+{
+    tableModel->revertAll();
+}
+
+bool DataBase::AddRow()
+{
+    if (!tableModel) return false;
+    tableModel->insertRow(tableModel->rowCount());
+    return true;
+}
+
+bool DataBase::RemoveRow(int row)
+{
+    if (!tableModel || row < 0 || row >= tableModel->rowCount())
+        return false;
+    tableModel->removeRow(row);
+    return true;
+}
+
 QSqlError DataBase::GetLastError()
 {
     return dataBase->lastError();

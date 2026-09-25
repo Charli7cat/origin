@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSqlTableModel>
-#include <QSqlQueryModel>
-#include <QSqlDatabase>
+#include <QSqlError>
+#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,22 +14,21 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void on_btnApply_clicked();
+    void on_btnConnect_clicked();
     void on_btnClear_clicked();
+    void on_act_connect_triggered();
+    void on_act_addData_triggered();
+
+    void onStatusConnection(bool status);
+    void onStatusRequest(QSqlError err);
 
 private:
     Ui::MainWindow *ui;
-
-    QSqlDatabase    m_db;
-    QSqlTableModel *m_tableModel = nullptr;
-    QSqlQueryModel *m_queryModel = nullptr;
-
-    void loadAllFilms();
-    void loadFilmsByGenre(const QString &genre);
+    DataBase *db = nullptr;
 };
 
 #endif
