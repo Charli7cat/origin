@@ -1,0 +1,12 @@
+[database]
+host=localhost
+port=5432
+name=searchdb
+user=postgres
+password=1106
+
+[indexer]
+directories=C:/Work/Documents
+extensions=txt,md,csv
+minWordLength=3
+maxWordLength=32
