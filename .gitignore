@@ -1,6 +1,5 @@
 *.user
 *.filters
-*.dll
 *.o
 .vs/
 out/
